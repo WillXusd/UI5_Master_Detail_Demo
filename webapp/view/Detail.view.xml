@@ -1,0 +1,103 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.ui.layout.form" xmlns="sap.m" xmlns:uxap="sap.uxap"
+	xmlns:form="sap.ui.layout.form" xmlns:layout="sap.ui.layout" controllerName="UI5_Master_Detail_Will.controller.Detail"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page>
+		<uxap:ObjectPageLayout id="div1" visible="true" showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true"
+			showFooter="false" subSectionLayout="TitleOnTop">
+			<uxap:headerContent>
+				<VBox alignItems="Stretch" direction="Column" fitContainer="false" width="auto" height="auto" justifyContent="Start" renderType="Div"
+					visible="true" displayInline="false">
+					<items>
+						<Link text="Tel: +33 6 1555 5353" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true"
+							emphasized="false" subtle="false"/>
+						<Link text="E-mail: prospect@eoc.com" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true"
+							emphasized="false" subtle="false"/>
+					</items>
+					<layoutData/>
+				</VBox>
+			</uxap:headerContent>
+			<uxap:headerTitle>
+				<uxap:ObjectPageHeader objectTitle="{detailModel>/ProductName}" objectSubtitle="{detailModel>/ShipperName}" headerDesign="Light"
+					objectImageShape="Square" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"
+					isActionAreaAlwaysVisible="true">
+					<uxap:actions></uxap:actions>
+					<uxap:breadCrumbsLinks/>
+					<uxap:navigationBar/>
+				</uxap:ObjectPageHeader>
+			</uxap:headerTitle>
+			<uxap:sections>
+				<uxap:ObjectPageSection showTitle="false" title="details " titleUppercase="true" visible="true">
+					<uxap:subSections>
+						<uxap:ObjectPageSubSection title="details" mode="Expanded">
+							<uxap:blocks>
+								<layout:Grid defaultSpan="L6 M8 S10">
+									<VBox class="sapUiSmallMargin">
+										<f:Form editable="false">
+											<f:layout>
+												<f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4"
+													emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+											</f:layout>
+											<f:formContainers>
+												<f:FormContainer>
+													<f:formElements>
+														<f:FormElement label="ProductName">
+															<f:fields>
+																<Input value="{detailModel>/ProductName}" enabled="{EnabledModel>/enabled}" id="name"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="ExtendedPrice">
+															<f:fields>
+																<Input value="{detailModel>/ExtendedPrice}" enabled="{EnabledModel>/enabled}"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="ShippedDate">
+															<f:fields>
+																<DatePicker value="{ path:'detailModel>/ShippedDate', formatter:'.formatter.date'}" enabled="{EnabledModel>/enabled}"
+																	displayFormat="yyyy/MM/dd"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="ShipperName">
+															<f:fields>
+																<Input value="{detailModel>/ShipperName}" enabled="{EnabledModel>/enabled}">
+																	<layoutData>
+																		<layout:GridData span="XL1 L2 M2 S4"/>
+																	</layoutData>
+																</Input>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="Country">
+															<f:fields>
+																<Select id="country" enabled="{EnabledModel>/enabled}" selectedKey="{Country}">
+																	<items>
+																		<core:Item text="England" key="England"/>
+																		<core:Item text="Germany" key="Germany"/>
+																		<core:Item text="USA" key="USA"/>
+																	</items>
+																</Select>
+															</f:fields>
+														</f:FormElement>
+													</f:formElements>
+												</f:FormContainer>
+											</f:formContainers>
+										</f:Form>
+									</VBox>
+								</layout:Grid>
+							</uxap:blocks>
+							<uxap:moreBlocks/>
+							<uxap:actions/>
+						</uxap:ObjectPageSubSection>
+					</uxap:subSections>
+					<uxap:customAnchorBarButton/>
+				</uxap:ObjectPageSection>
+			</uxap:sections>
+		</uxap:ObjectPageLayout>
+		<footer>
+			<OverflowToolbar id="otbFooter">
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Save" visible="{changeBtn>/isAccept}" press="onSave"></Button>
+				<Button type="Reject" text="Edit" visible="{changeBtn>/isEdite}" press="onEdit"></Button>
+				<Button text="Cancel" visible="{changeBtn>/isCancel}" press="onCancel"></Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

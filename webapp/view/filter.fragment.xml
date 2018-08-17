@@ -1,0 +1,29 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		title="Filter"
+		confirm="onViewSettingsConfirm_filter">
+		<filterItems>
+			<ViewSettingsFilterItem
+				text="Status"
+				key="Status"
+				multiSelect="true">
+				<items>
+					<ViewSettingsItem text="Belgium" key="Status___EQ___A" />
+					<ViewSettingsItem text="Germany" key="Status___EQ___B" />
+					<ViewSettingsItem text="Netherlands" key="Status___EQ___C" />
+				</items>
+			</ViewSettingsFilterItem>
+			<ViewSettingsFilterItem
+				text="ShipperName"
+				key="ShipperName"
+				multiSelect="true">
+				<items>
+					<ViewSettingsItem text="ACME" key="ShipperName___EQ___ACME"/>
+					<ViewSettingsItem text="Fun Inc." key="ShipperName___EQ___Fun Inc." />
+				</items>
+			</ViewSettingsFilterItem>
+		</filterItems>
+		</ViewSettingsDialog>
+</core:FragmentDefinition>

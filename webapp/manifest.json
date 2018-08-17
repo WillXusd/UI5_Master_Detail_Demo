@@ -1,0 +1,115 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "UI5_Master_Detail_Will",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+
+		]
+	},
+
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "UI5_Master_Detail_Will.view.App",
+			"type": "XML"
+		},
+		"routing": {
+			"config": {
+				"viewType": "XML",
+				"viewPath": "UI5_Master_Detail_Will.view",
+				"controlId": "mySplitApp",
+				"clearTarget": false,
+				"routerClass": "sap.m.routing.Router",
+				"transition": "silde",
+				"controlAggregation": "detailPages"
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "Master",
+				"target": ["Master", "Message"]
+			}, {
+				"pattern": "Detail/{sPath}",
+				"name": "Detail",
+				"target": ["Detail"]
+			}],
+			"targets": {
+				"Master": {
+					"controlAggregation": "masterPages",
+					"viewName": "Master",
+					"viewLevel": 1
+				},
+				"Detail": {
+					"controlAggregation": "detailPages",
+					"viewName": "Detail",
+					"viewLevel": 2
+				},
+				"Message": {
+					"controlAggregation": "detailPages",
+					"viewName": "Message",
+					"viewLevel": 3
+				}
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "UI5_Master_Detail_Will.i18n.i18n"
+				}
+			},
+			"invoice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/userList.json"
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		}
+	}
+}

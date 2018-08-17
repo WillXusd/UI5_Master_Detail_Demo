@@ -1,0 +1,4 @@
+<mvc:View  xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m" controllerName="UI5_Master_Detail_Will.controller.App">
+<SplitApp  id="mySplitApp"/>
+</mvc:View>

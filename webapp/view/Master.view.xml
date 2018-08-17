@@ -1,0 +1,36 @@
+<View xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:semantic="sap.m.semantic" controllerName="UI5_Master_Detail_Will.controller.Master">
+	<Page title="Orders List">
+		<List id="orders" items="{invoice>/Invoices}" mode="SingleSelectMaster" selectionChange="handleListSelect">
+				<headerToolbar>
+						<Toolbar visible="true" enabled="true"  design="Solid">
+							<content>
+								<SearchField placeholder="Search" showSearchButton="true" search="onSearch" visible="true" width="100%"/>
+							</content>
+						</Toolbar>
+					</headerToolbar><items>
+				<ObjectListItem title="{invoice>ProductName}" number="{invoice>ExtendedPrice}" numberUnit="EUR"
+					numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Error' : 'Success' }" type="Active" selected="false" showMarkers="false">
+				
+					<attributes>
+						<ObjectAttribute title="Quantity" text="{invoice>Quantity}" active="false"/>
+						<ObjectAttribute title="ShipperName" text="{invoice>ShipperName}" active="falseQuantity"/>
+						<ObjectAttribute title="Status" text="{ path: 'invoice>Status', formatter: '.formatter.statusText' }" active="false"/>
+						<ObjectAttribute title="Status" text="{ path: 'invoice>ShippedDate', formatter: '.formatter.date' }" active="false"/>
+					</attributes>
+					<firstStatus/>
+					<secondStatus/>
+				</ObjectListItem>
+			</items>
+		</List>
+		<footer>
+			<Bar design="Auto">
+				<contentLeft></contentLeft>
+				<contentMiddle/>
+				<contentRight>
+					<Button icon="sap-icon://filter" press="onFilter"/>
+					<Button icon="sap-icon://sort" press="onSort"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</View>
